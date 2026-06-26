@@ -654,7 +654,7 @@ def to_sentence(toks, feats, dataset, tok_feats_vocab=None):
         }
 
     # Binary mask - encoder/decoder
-    token_masks = np.zeros((len(toks), len(tok_feats_vocab["stoi"])), dtype=np.bool)
+    token_masks = np.zeros((len(toks), len(tok_feats_vocab["stoi"])), dtype=bool)
     for i, (encu, decu, enctagu, dectagu, oth) in enumerate(
         zip(
             encoder_uniques,
@@ -754,4 +754,5 @@ def main():
 
 
 if __name__ == "__main__":
+    mp.set_start_method("fork")
     main()
